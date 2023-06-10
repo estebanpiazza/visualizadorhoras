@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario en cada país</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+          table.tableizer-table {
+    font-size: 12px;
+    border: 1px solid #CCC; 
+    font-family: Arial, Helvetica, sans-serif;
+  } 
+  .tableizer-table td {
+    padding: 4px;
+    margin: 3px;
+    border: 1px solid #CCC;
+  }
+  .tableizer-table th {
+    background-color: #104E8B; 
+    color: #FFF;
+    font-weight: bold;
+  }
+    </style>
+</head>
+<body>
+  <div class="container">
+    
+    <h1 >Visualizador de horas</h1>
+    <h2>Hora actual en cada país</h2>
+    <h3>Hora UTC:</h3><h3 id="utc"></h3>
+    
+    <div class="row">
+    <table class="tableizer-table">
+        <tr><th class=".tableizer-table th">Pais</th><th class=".tableizer-table th">Hora</th></tr>
+        <tr><td class=" tableizer-table td">Argentina</td><td class=" tableizer-table td"><p id="horaArg">0</p></td></tr>
+        <tr><td class=" tableizer-table td">Chile</td><td class=" tableizer-table td"><p id="horaCL">0</p></td></tr>
+        <tr><td class=" tableizer-table td">Colombia</td><td class=" tableizer-table td"><p id="horaCOL">0</p></td></tr>
+        <tr><td class=" tableizer-table td">España</td><td class=" tableizer-table td"><p id="horaEs">0</p></td></tr>
+        <tr><td class=" tableizer-table td">Mexico</td><td class=" tableizer-table td"><p id="horaMx">0</p></td></tr>
+        <tr><td class=" tableizer-table td">Peru</td><td class=" tableizer-table td"><p id="horaPR">0</p></td></tr>
+    </table>
+    </div>
+    <div class="row">
+      <h2 id="horaLocal"></h2>
+    
+</div>
+ <!--    <div class="row">
+      <h3>Conversor de horas(solo hora, no minutos)</h3>
+    <input type="text" name="Ingrese la hora de Argentina" id="horaIngresada" >
+    <input type="button" value="Convertir"  onclick="convertir()">
+    
+
+    </div>
+    <p id="horas"></p>
+</body> -->
+
+<script>
+const d = new Date();
+const localTime = d.getTime();
+const localOffset = d.getTimezoneOffset() * 60000;
+const utc = localTime + localOffset;
+
+
+const ARGoffset = -3; // UTC of USA Eastern Time Zone is -05.00
+const ARG = utc + (3600000 * ARGoffset);
+const ARGTimeNow = new Date(ARG).toLocaleString();
+
+const CLoffset = -4; // UTC of USA Eastern Time Zone is -05.00
+const CL = utc + (3600000 * CLoffset);
+const CLTimeNow = new Date(CL).toLocaleString();
+
+ const COLoffset = -5; // UTC of USA Eastern Time Zone is -05.00
+const COL = utc + (3600000 * COLoffset);
+const COLTimeNow = new Date(COL).toLocaleString(); 
+
+const ESoffset = +2; // UTC of USA Eastern Time Zone is -05.00
+const ES = utc + (3600000 * ESoffset);
+const ESTimeNow = new Date(ES).toLocaleString();
+ 
+const MEXoffset = -6; // UTC of USA Eastern Time Zone is -05.00
+const MEX = utc + (3600000 * MEXoffset);
+const MEXTimeNow = new Date(MEX).toLocaleString();
+
+const PRoffset = -5; // UTC of USA Eastern Time Zone is -05.00
+const PR = utc + (3600000 * PRoffset);
+const PRTimeNow = new Date(PR).toLocaleString();
+
+ 
+  let s= new Date().toLocaleString();
+  document.getElementById("horaLocal").innerText=`La hora local es: ${s}`
+    document.getElementById("horaArg").innerText=ARGTimeNow
+    document.getElementById("horaCL").innerText=CLTimeNow
+    document.getElementById("horaCOL").innerText=COLTimeNow
+    document.getElementById("horaEs").innerText=ESTimeNow
+    document.getElementById("horaMx").innerText=MEXTimeNow
+    document.getElementById("horaPR").innerText=PRTimeNow
+
+
+ /*    function convertir(){
+
+    }  */
+    
+    
+    </script>
+    
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
